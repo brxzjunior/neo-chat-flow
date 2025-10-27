@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ChatBox } from "@/components/ChatBox";
 import { InputBar } from "@/components/InputBar";
 import { Message } from "@/components/MessageBubble";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
 import { toast } from "sonner";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000/chat";
@@ -65,16 +68,24 @@ const ChatPage = () => {
     <div className="flex flex-col h-screen bg-gradient-chat">
       <header className="border-b bg-chat-background shadow-sm">
         <div className="max-w-4xl mx-auto px-4 py-4">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-              <span className="text-xl">🤖</span>
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                <span className="text-xl">🤖</span>
+              </div>
+              <div>
+                <h1 className="text-xl font-semibold">AI Chat Assistant</h1>
+                <p className="text-sm text-muted-foreground">
+                  Powered by Gemini 2.5
+                </p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-xl font-semibold">AI Chat Assistant</h1>
-              <p className="text-sm text-muted-foreground">
-                Powered by Gemini 2.5
-              </p>
-            </div>
+            <Button variant="ghost" size="sm" asChild>
+              <Link to="/">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Home
+              </Link>
+            </Button>
           </div>
         </div>
       </header>
